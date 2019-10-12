@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>vue_class2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-on:input="changeTitle">
+<!--    v-on绑定事件监听器。 指令带有前缀 v-，以表示它们是 Vue 提供的特殊特性。-->
+    <p>
+{{title}}
+    </p>
+</div>
+
+
+
+<script>
+    new Vue({
+       el:'#app',
+        // el:选择你想选择的东西
+       data:{
+           title:'hello world' // 设置title数据
+       },
+        methods:{
+           changeTitle:function (event) {
+              this.title = event.target.value;
+           }
+        }
+    });
+
+</script>
+</body>
+
+</html>

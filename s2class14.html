@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>class14:如何输出基础的HTML</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="app">
+    <h1 v-once>{{title }}</h1>
+    <p >
+        {{sayHello()}}
+        -- <a v-bind:href="link">Google</a>
+    </p>
+    <p>
+        {{finishedLink}}
+    </p>
+    <p v-html="finishedLink">
+     学习重点是 v-html
+        用v-html 可以输出基础的HTML
+    </p>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                title : 'hello stacy',
+                link:'http://google.com',
+                finishedLink: '<a href="http://google.com">Google</a>'
+            },
+            methods: {
+                sayHello: function () {
+                    this.title = 'hello stacy2';
+                    return this.title ;
+                }
+            }
+
+        })
+    </script>
+</div>
+</body>
+</html>

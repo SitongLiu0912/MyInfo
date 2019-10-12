@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>s2class13:v-once禁止二次渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="app">
+    <h1 v-once>{{title }}</h1>
+    <p >
+        {{sayHello()}}
+        - <a v-bind:href="link"> Google</a>
+    </p>
+    <p>
+        只渲染元素和组件一次。
+        随后的重新渲染，元素/组件及其所有的子节点
+        将被视为静态内容并跳过。
+        这可以用于优化更新性能。
+    </p>
+</div>
+
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            link:'http://google.com',
+            title : 'hello stacy'
+        },
+        methods: {
+            sayHello: function () {
+                this.title = 'hello stacy2';
+                return this.title ;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

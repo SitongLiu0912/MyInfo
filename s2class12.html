@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>s2class12理解和使用指令</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="app">
+
+    <p >
+         {{sayHello()}}
+          - <a v-bind:href="link"> Google</a>
+    </p>
+  <p>
+      学习 v-bind <br>
+
+      动态地绑定一个或多个特性，或一个组件 prop 到表达式。
+
+      在绑定 class 或 style 特性时，支持其它类型的值，如数组或对象。可以通过下面的教程链接查看详情。
+
+      在绑定 prop 时，prop 必须在子组件中声明。可以用修饰符指定不同的绑定类型。
+
+      没有参数时，可以绑定到一个包含键值对的对象。注意此时 class 和 style 绑定不支持数组和对象。
+      例如 img v-bind:src="imageSrc"  a v-bind:href="link"
+
+  </p>
+</div>
+
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            link:'http://google.com',
+            title : 'hello stacy'
+        },
+        methods: {
+            sayHello: function () {
+               return this.title ;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

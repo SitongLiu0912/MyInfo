@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>章节2课时8</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<body>
+<div id="app">
+    <p>
+<!--         {{ title }}-->
+        {{sayHello() }} - <a v-bind:href="link">Google</a>
+<!--        {{}} <a href="{{link}} 会被URL 编码，我们不能在HTML元素属性里面使用大括号写法，只能在放普通文本的地方放大括号-->
+<!--        the {{}}syntax is also called 'interpolation' or 'string interpolation'-->
+    hihihihihi
+
+    </p>
+</div>
+
+</body>
+<script>
+    new Vue({
+       el: "#app",
+       data:{
+           title:'hello stacy',
+           link: 'http://google.com'
+       },
+        methods: {
+           sayHello: function () {
+               // return 'hello';
+               return this.title;
+           }
+        }
+    });
+</script>
+</html>

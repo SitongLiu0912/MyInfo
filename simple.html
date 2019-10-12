@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./player.bundle.js"></script>
+    <style>
+        #player {
+            height: 100%;
+            width: 100%;
+        }
+
+        #AsiaPlayPlayerContainer:-webkit-full-screen {
+            width: 20%;
+            height: 20%;
+            background-color: black;
+        }
+        #AsiaPlayPlayerContainer:-webkit-full-screen video {
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div id="player"></div>
+    <script>
+        var playerConfig = {
+            settings: {
+                account_id: "b59a8e19-cfaa-4f22-bb5a-156d92847671",
+                controlpanel_url: "https://uat-vcmsapi.catchplay.com/api/controlpanel",
+                debug_mode: 31,
+                force: {
+                    forceKey: "YXNpYXBsYXktcHJvZHVjdC10ZWFtLWFwcGx5",
+                    isEnabledWatchLog: true,
+                },
+                geo_secret: "YmV0YTIwMTM=",
+                get_report_url: "https://uat-vcmsapi.catchplay.com/api/loginfo",
+                player_type: "",
+                preview_time: 300,
+                send_vcms_log_url: "https://uat-vcmsapi.catchplay.com/api/cpplog",
+                set_report_url: "https://uat-vcmsapi.catchplay.com/api/deviceinfo",
+                update_report_url: "https://uat-vcmsapi.catchplay.com/api/updateinfo",
+                vcms_log_interval: 10,
+                video_info_url: "https://uat-vcmsapi.catchplay.com/api/notoken/videoinfo",
+                video_token_url: "https://uat-vcmsapi.catchplay.com/api/getdrmtoken",
+                watch_log_url: "https://uat-api.catchplay.com/me/logs/watch",
+            }
+        };
+
+        var videoConfig = {
+            accessToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY2NvdW50U3RhdHVzIjoicHJlbWl1bSIsImFjY291bnRJZCI6IjIxY2NiOTM4LTc1YzgtNGQ5My1hZWNmLWY4YWFlNTdiMmNjNSIsImdyYW50X3R5cGUiOiJwYXNzd29yZCIsInVzZXJfbmFtZSI6IjA5OTk5OTkwMTEiLCJzY29wZSI6WyJwdWJsaWM6LioiLCJtZTouKiJdLCJpc3MiOiJTVU4tQXV0aCIsImV4cCI6MTU2OTU3NzQ3NywidG9rZW5UeXBlIjoiSldUIiwiaWF0IjoxNTY5NDkxMDc3LCJhdXRob3JpdGllcyI6WyJwcmVtaXVtIl0sImNsaWVudF9pZCI6IjFjODU2OWUyLTA1MGQtNDc3MS04OWQ5LWI4YmIwNmM1ODEyOSIsInRlcnJpdG9yeSI6IlRXIn0.pd1Mcix05CcDqYMhNgObsx9885Bt0m0mye0Qh1FlgWQ",
+            brightcoveID: "",
+            cppID: "fbcc5fe6-f309-406b-a491-be5c4fe61d6d",
+            deviceId: "",
+            deviceName: "",
+            deviceType: "",
+            deviceVersion: "",
+            orderId: "e5ea04be-a996-4721-826f-82ade7700fef",
+            playToken: "73b3aafb-96e2-4417-89a5-d8e13515a6bb",
+            startSecond: 0,
+            trailerURL: "https://durvstsvhbuoh.cloudfront.net/WAR-TW-002-A0070/videos/misc/mp4/trailer/WAR-TW-002-A0070-406p-800k.mp4",
+            videoCode: "PAR-TW-001-A0062",
+            videoId: "XFpdSibm-q9UM-qyrX-m5xW-il3gvOuqbEHc",
+            videoURL: "",
+            watchType: "movie"
+        };
+
+        var playerContainer = document.querySelector('#player');
+        var player = new AsiaPlayPlayer(playerContainer, playerConfig);
+        playerContainer.addEventListener('PlayerKitonInitEvent', function () {
+            console.log('%c (PlayerKitonInitEvent)', 'color:green');
+            player.playVideo(videoConfig);
+        });
+
+        playerContainer.addEventListener('PlayerKitonReadytoPlayEvent', function () {
+            console.log('%c (PlayerKitonReadytoPlayEvent)', 'color:green');
+            var video = document.querySelector('#AsiaPlayPlayer');
+            video.setAttribute('controls', '');
+        });
+
+        playerContainer.addEventListener('PlayerKitonEndtoPlayEvent', function () {
+            console.log('%c (PlayerKitonEndtoPlayEvent) you can decide continue play next video or not at this event.', 'color:green');
+        });
+
+        playerContainer.addEventListener('PlayerKitonStoptoPlayEvent', function () {
+            console.log('%c (PlayerKitonStoptoPlayEvent)', 'color:green');
+            // player.playVideo(videoConfig);
+        });
+    </script>
+</body>
+</html>
