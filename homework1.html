@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>class15:作业</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="exercise">
+    <p>
+        {{name}}
+        ({{age}})
+    </p>
+    <p>
+        {{age*3}}
+    </p>
+    <p>
+        {{random1()}}
+    </p>
+    <img v-bind:src="link" style="width:100px;height:100px;">
+    <input type="text" v-bind:value="name">
+    <p>
+        <input type="text" v-on:keyup.enter.space="alertMe">
+        <input type="text" v-on:keyup.enter.esc="alertMe">
+    </p>
+    <p>
+        <button v-on:click="btnClick">show alert</button>
+    </p>
+    <input type="text" v-on:keydown="inputText">
+    <p v-bind:value="inputText">{{  }}</p>
+</div>
+
+
+<script>
+    new Vue({
+        el:"#exercise",
+        data:{
+            name : 'stacy',
+            age: 27,
+            link: 'https://images.pexels.com/photos/658687/pexels-photo-658687.jpeg?cs=srgb&amp;dl=beautiful-bloom-blooming-658687.jpg&amp;fm=jpg'
+
+        },
+        methods: {
+            random1: function () {
+              return  Math.random();
+
+            //  必须要 return
+            },
+            alertMe: function(){
+                alert('alert!')
+            },
+            btnClick: function () {
+                alert("button clicked!")
+            },
+            inputText:function () {
+
+            }
+
+        }
+
+    })
+</script>
+</body>
+</html>
