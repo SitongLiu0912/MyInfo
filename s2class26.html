@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>class26：用计算属性来响应改变</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="app">
+  <button v-on:click=" counter++ ">
+   Increase
+  </button >
+    <button v-on:click=" counter-- ">
+        Decrease
+    </button>
+    <button v-on:click="secondCounter++">
+        secondCounter
+    </button>
+    <p>
+       Counter: {{ counter }} | {{secondCounter }}
+    </p>
+    <p>
+        Result: {{ result()}} | {{secondCounter }}
+    </p>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                counter :0,
+                secondCounter: 0,
+
+            },
+            computed:{
+               output: function () {
+                   return this.counter>5 ? 'Greater':'Smaller'
+               }
+            },
+            methods: {
+                result: function(){
+                    return this.counter>5 ? 'Greater':'Smaller'
+                }
+                // increase: function () {
+                //     this.counter++;
+                //     this.result = this.counter>5 ?"Greater 5" : "Smaller 5"
+                // },
+                // decrease: function () {
+                //     this.counter--;
+                //     this.result = this.counter>5 ?"Greater 5" : "Smaller 5"
+                // }
+            }
+
+        })
+    </script>
+</div>
+</body>
+</html>
