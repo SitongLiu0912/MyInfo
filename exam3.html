@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>作业3：响应式属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+<div id="exercise">
+<div>
+    <p> Current Value {{ value }}</p>
+    <button @click ='value += 5'> Add 5</button>
+    <button @click ='value += 1'> Add 1</button>
+    <p>{{ result }}</p>
+</div>
+<div>
+    <input type="text">
+    <p>{{value}}</p>
+</div>
+    <script>
+        new Vue({
+            el:"#exercise",
+            data:{
+                value:0,
+
+            },
+            computed:{
+                result: function () {
+                    return this.value> 37 ? 'done':'not there yet'
+                }
+            },
+            watch:{
+                result: function(value){
+                    var vm =this;
+                    setTimeout(
+                        function () {
+                            vm.value = 0;
+                        },5000
+                    );
+                }
+            },
+
+            // methods: {
+            //     result: function(){
+            //         return this.counter>5 ? 'Greater':'Smaller'
+            //     }
+            //     // increase: function () {
+            //     //     this.counter++;
+            //     //     this.result = this.counter>5 ?"Greater 5" : "Smaller 5"
+            //     // },
+            //     // decrease: function () {
+            //     //     this.counter--;
+            //     //     this.result = this.counter>5 ?"Greater 5" : "Smaller 5"
+            //     // }
+            // }
+
+        })
+    </script>
+</div>
+</body>
+</html>
+
